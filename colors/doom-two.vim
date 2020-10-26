@@ -4,7 +4,7 @@ if &background != 'dark'
   set background=dark
 end
 
-let colors_name = 'doom-one'
+let colors_name = 'doom-two'
 
 " Highlighting function {{{
 function! s:_ (name, ...)
