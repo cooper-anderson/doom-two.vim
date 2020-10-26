@@ -1,39 +1,39 @@
 " !::exe [So]
 
 if &background != 'dark'
-  set background=dark
+	set background=dark
 end
 
 let colors_name = 'doom-two'
 
 " Highlighting function {{{
 function! s:_ (name, ...)
-  let fg = ''
-  let bg = ''
-  let attr = ''
+	let fg = ''
+	let bg = ''
+	let attr = ''
 
-  if type(a:1) == 3
-    let fg   = get(a:1, 0, '')
-    let bg   = get(a:1, 1, '')
-    let attr = get(a:1, 2, '')
-  else
-    let fg   = get(a:000, 0, '')
-    let bg   = get(a:000, 1, '')
-    let attr = get(a:000, 2, '')
-  end
+	if type(a:1) == 3
+		let fg   = get(a:1, 0, '')
+		let bg   = get(a:1, 1, '')
+		let attr = get(a:1, 2, '')
+	else
+		let fg   = get(a:000, 0, '')
+		let bg   = get(a:000, 1, '')
+		let attr = get(a:000, 2, '')
+	end
 
-  let cmd = 'hi! ' . a:name
-  if !empty(fg)
-    let cmd .= ' guifg=' . fg
-  end
-  if !empty(bg)
-    let cmd .= ' guibg=' . bg
-  end
-  if !empty(attr)
-    let cmd .= ' gui=' . attr
-  end
-  execute 'hi clear ' a:name
-  execute cmd
+	let cmd = 'hi! ' . a:name
+	if !empty(fg)
+		let cmd .= ' guifg=' . fg
+	end
+	if !empty(bg)
+		let cmd .= ' guibg=' . bg
+	end
+	if !empty(attr)
+		let cmd .= ' gui=' . attr
+	end
+	execute 'hi clear ' a:name
+	execute cmd
 endfunc
 
 " }}}
