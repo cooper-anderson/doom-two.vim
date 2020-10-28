@@ -56,6 +56,7 @@ let s:orange     = '#da8548'
 let s:green      = '#98be65'
 let s:teal       = '#4db5bd'
 let s:yellow     = '#ECBE7B'
+let s:yellower   = '#f8e71c'
 let s:blue       = '#51afef'
 let s:dark_blue  = '#2257A0'
 let s:magenta    = '#c678dd'
@@ -64,9 +65,9 @@ let s:cyan       = '#46D9FF'
 let s:dark_cyan  = '#5699AF'
 let s:white      = '#efefef'
 
-let s:bg            = '#282c34'
+let s:bg            = '#141414'
 let s:bg_alt        = '#21242b'
-let s:bg_highlight  = '#2E323C'
+let s:bg_highlight  = '#242424'
 let s:bg_popup      = '#3E4556'
 let s:bg_widget     = s:bg
 let s:bg_statusline = s:bg_popup
@@ -77,7 +78,7 @@ let s:fg           = '#bbc2cf'
 let s:fg_alt       = '#5B6268'
 let s:fg_widget    = s:fg
 let s:fg_conceal   = s:base4
-let s:fg_subtle    = s:base7
+let s:fg_subtle    = s:base1
 let s:fg_highlight = color#Lighten(s:fg, 0.2)
 
 
@@ -106,7 +107,7 @@ let s:gh_danger_bg2 = color#Mix('#ffdce0', s:bg, 0.9)
 " General UI                                                                 {{{
 
 call s:_('Normal',            s:fg,           s:bg)
-call s:_('EndOfBuffer',       s:fg,           s:bg)
+call s:_('EndOfBuffer',       s:base4,           '')
 call s:_('NormalPopup',       s:fg_highlight, s:bg_popup)
 call s:_('NormalPopover',     s:fg_highlight, s:bg_popup)
 call s:_('NormalPopupPrompt', s:base7,        s:bg_highlight, 'bold')
@@ -114,14 +115,15 @@ call s:_('NormalPopupPrompt', s:base7,        s:bg_highlight, 'bold')
 call s:_('Cursor',           '', s:base0,  'reverse')
 call s:_('SecondaryCursor',  '', s:highlight, 'none')
 
-call s:_('Folded',           s:base7,  s:bg_highlight, 'none')
+call s:_('Folded',           s:yellow,  '', 'none')
 call s:_('FoldColumn',       s:fg_alt, s:bg_widget, '')
 call s:_('SignColumn',       '',       s:bg_widget, '')
 call s:_('ColorColumn',      '',       s:bg_widget, '')
 
-call s:_('CursorLine',       '',          s:bg_highlight)
+" call s:_('CursorLine',       '',          s:bg_highlight)
+call s:_('CursorLine',       '',          "#0f0f0f")
 call s:_('CursorColumn',     '',          s:bg_highlight)
-call s:_('CursorLineNr',     s:highlight, s:bg_highlight, 'none')
+call s:_('CursorLineNr',     s:highlight, '', 'none')
 call s:_('LineNr',           s:base4,     s:bg_widget,    'none')
 
 call s:_('IndentGuidesEven', s:base4, '', '')
@@ -153,7 +155,7 @@ call s:_('PmenuSbar',    '',                s:bg_alt)
 call s:_('PmenuThumb',   '#666660',         '#666660')
 
 if exists('&pumblend')
-  set pumblend=20
+  set pumblend=10
 end
 
 let s:bg_current = s:bg
@@ -164,17 +166,18 @@ call s:_('TabLine',             s:base7, s:bg_alt,  'bold')
 call s:_('TabLineSel',          s:blue,  s:bg_current, 'bold')
 call s:_('TabLineFill',         'none',  s:bg_other,   'bold')
 
-call s:_('BufferCurrent',     s:base9,          s:bg_current,  'bold')
-call s:_('BufferCurrentMod',  s:yellow,         s:bg_current,  'bold')
+call s:_('BufferCurrent',     s:base9,          s:bg_current,  'none')
+call s:_('BufferCurrentMod',  s:yellow,         s:bg_current,  'none')
 call s:_('BufferCurrentSign', s:blue,           s:bg_current,  'none')
 
 call s:_('BufferVisible',     s:base9,          s:bg_visible,  'none')
 call s:_('BufferVisibleMod',  s:yellow,         s:bg_visible,  'none')
 call s:_('BufferVisibleSign', s:base8,          s:bg_visible,  'none')
 
-call s:_('BufferInactive',     s:base6,          s:bg_other,    'none')
-call s:_('BufferInactiveMod',  s:yellow,         s:bg_other,    'none')
-call s:_('BufferInactiveSign', s:base4,          s:bg_other,      'none')
+call s:_('BufferInactive',       s:base6,            s:bg_other,  'none')
+call s:_('BufferInactiveMod',    s:yellow,           s:bg_other,  'none')
+call s:_('BufferInactiveSign',   s:base4,            s:bg_other,  'none')
+call s:_('BufferInactiveTarget', s:highlight,        s:bg_other,  'none')
 
 call s:_('BufferPart',        s:diff_info_fg,   s:diff_info_bg0, 'bold')
 
@@ -197,14 +200,14 @@ let gitgutter_sign_modified_removed = g:icons.gitgutter_sign_modified_removed
 " let s:bg_search = color#Mix(s:bg, s:yellow, 0.2)
 let s:bg_search = s:yellow
 
-call s:_('Search',          s:highlight_color, s:bg_search,      'none')
-call s:_('IncSearch',       s:highlight_color, s:bg_search,      'none')
+call s:_('Search',          s:bg_search, '',      'underline')
+call s:_('IncSearch',       s:bg_search, '',      'underline')
 call s:_('IncSearchCursor', '', '',               'reverse')
 
 call s:_('Conceal',         s:fg_conceal, 'none', '')
-call s:_('SpecialKey',      s:violet,     'none', 'bold')
+call s:_('SpecialKey',      s:base4,     'none', 'none')
 call s:_('NonText',         s:fg_alt,     '',     'bold')
-call s:_('MatchParen',      s:red,        'none', 'bold')
+call s:_('MatchParen',      s:red,        'none', 'none')
 call s:_('Whitespace',      s:fg_subtle,  '',     '')
 
 
@@ -216,7 +219,7 @@ call s:_('Question',        s:green, '', 'bold')
 call s:_('File',            s:fg,      '', 'bold')
 call s:_('Directory',       s:yellow,  '', 'bold')
 call s:_('Section',         s:magenta, '', 'bold')
-call s:_('Title',           s:violet,  '', 'bold')
+call s:_('Title',           s:yellow,  '', 'bold')
 
 call s:_('Bold', '', '', 'bold')
 
@@ -226,16 +229,21 @@ let s:text_colors = {
 \ 'Normal':  s:fg,
 \ 'Info':    s:blue,
 \ 'Success': s:green,
-\ 'Warning': s:yellow,
+\ 'Warning': s:orange,
 \ 'Debug':   s:yellow,
 \ 'Error':   s:red,
 \ 'Special': s:violet,
 \ 'Muted':   s:base7,
 \}
+
+let s:bg_status   = s:base3
 for key in keys(s:text_colors)
-  call s:_('Text' . key,          s:text_colors[key], '', '')
-  call s:_('Text' . key . 'Bold', s:text_colors[key], '', 'bold')
+	call s:_('Text' . key,          s:text_colors[key], '', '')
+	call s:_('Tabline' . key,          s:text_colors[key], s:bg_status, '')
+	call s:_('Text' . key . 'Bold', s:text_colors[key], '', 'bold')
 endfor
+call s:_('TablineSeparator', s:bg_status, s:bg_other, '')
+call s:_('TablineBlank', s:bg_status, s:bg, '')
 
 " NOTE/DONE/TODO/FIXME/XXX/DEPRECATED comment highlights
 
@@ -258,7 +266,7 @@ call s:_('Link',                 s:tag, '',        'underline')
 call s:_('URL',                  s:tag, '',        'underline')
 hi! link Underlined     URL
 
-call s:_('Comment',              s:base6, '',        '')
+call s:_('Comment',              s:base6, '',        'italic')
 call s:_('CommentBold',          s:base6, '',        'bold')
 call s:_('SpecialComment',       s:base7, '',        'bold')
 hi! link CommentURL     URL
@@ -268,26 +276,26 @@ hi! link Noise Comment
 
 call s:_('Global',               s:magenta, '',        'none')
 call s:_('PreProc',              s:magenta, '',        'none')
-call s:_('Macro',                s:magenta, '',        'bold')
+call s:_('Macro',                s:dark_cyan, '',        'italic')
 call s:_('Define',               s:magenta, '',        'bold')
 call s:_('PreCondit',            s:magenta, '',        'bold')
-call s:_('Include',              s:magenta, '',        'bold')
+call s:_('Include',              s:red, '',        'italic')
 
 call s:_('Repeat',               s:blue, '',        '')
-call s:_('Keyword',              s:blue, '',        '')
+call s:_('Keyword',              s:magenta, '',        'italic')
 call s:_('Statement',            s:blue, '',        'none')
-call s:_('Label',                s:blue, '',        '')
+call s:_('Label',                s:blue, '',        'italic')
 
 call s:_('Operator',             s:blue, '',        '')
 
-call s:_('Constant',             s:violet, '',        'bold')
+call s:_('Constant',             s:green, '',        'italic')
 
 call s:_('Number',               s:orange, '',        'none')
 call s:_('Float',                s:orange, '',        'none')
-call s:_('Boolean',              s:orange, '',        'none')
+call s:_('Boolean',              s:orange, '',        'italic')
 call s:_('Enum',                 s:orange, '',        'none')
 
-call s:_('Delimiter',            s:blue,  '',        'none')
+call s:_('Delimiter',            s:fg,  '',        'none')
 call s:_('DelimiterAlt',         s:base8, '',        'none')
 call s:_('SpecialChar',          s:base8, '',        'bold')
 
@@ -301,11 +309,11 @@ call s:_('Special',              s:violet, '',        'bold')
 call s:_('SpecialBold',          s:violet, '',        'bold')
 
 
-call s:_('Identifier',           color#Lighten(s:magenta, 0.2), '',        'none')
+call s:_('Identifier',           s:fg, '',        'none')
 call s:_('Argument',             color#Lighten(s:magenta, 0.2), '',        'none')
 call s:_('Variable',             color#Lighten(s:magenta, 0.2), '',        'none')
 
-call s:_('Function',             s:yellow, '',        'none')
+call s:_('Function',             s:blue, '',        'none')
 call s:_('Method',               s:yellow, '',        'bold')
 
 call s:_('Symbol',               s:magenta, '',        'none')
@@ -321,7 +329,8 @@ call s:_('Type',                 s:yellow, '',        'none')
 call s:_('StorageClass',         s:blue, '',        'none')
 call s:_('Class',                s:blue, '',        'none')
 call s:_('Structure',            s:blue, '',        'none')
-call s:_('Typedef',              s:blue, '',        'none')
+call s:_('Typedef',              color#Lighten(s:orange, 0.5), '',        'none')
+call s:_('Parameter',              color#Lighten(s:orange, 0.5), '',        'none')
 
 call s:_('Regexp',               '#dd0093', 'none',        'none')
 call s:_('RegexpSpecial',        '#a40073', 'none',        'none')
@@ -469,6 +478,30 @@ hi! link cocoaFunction Function
 hi! link objcMethodName Identifier
 hi! link objcMethodArg Normal
 hi! link objcMessageName Identifier
+
+hi! link jsFuncBlock Function
+hi! link jsObjectKey Type
+hi! link jsReturn Identifier
+hi! link jsVariableDef Identifier
+
+hi! link TSConstBuiltin Constant
+hi! link TSFuncBuiltin Function
+hi! link TSStringEscape Character
+hi! link TSStringRegex SpecialChar
+hi! link TSURI Tag
+hi! link TSVariableBuiltin Keyword
+	" jsFuncBlock   = 'Function',
+	" jsObjectKey   = 'Type',
+	" jsReturn      = {fg=purple_light, style='italic'},
+	" jsVariableDef = 'Identifier',
+
+	" --[[ 4.3.11. JSON ]]
+	" jsonBraces = 'luaBraces',
+	" jsonKeywordMatch = 'Operator',
+	" jsonNull   = 'Constant',
+	" jsonQuote  = 'Delimiter',
+	" jsonString = 'String',
+	" jsonStringSQError = 'Exception',
 
 " 1}}}
 
