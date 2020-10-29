@@ -170,7 +170,7 @@ call s:_('BufferCurrent',     s:base9,          s:bg_current,  'none')
 call s:_('BufferCurrentMod',  s:yellow,         s:bg_current,  'none')
 call s:_('BufferCurrentSign', s:blue,           s:bg_current,  'none')
 
-call s:_('BufferVisible',     s:base9,          s:bg_visible,  'none')
+call s:_('BufferVisible',     s:base8,          s:bg_visible,  'none')
 call s:_('BufferVisibleMod',  s:yellow,         s:bg_visible,  'none')
 call s:_('BufferVisibleSign', s:base8,          s:bg_visible,  'none')
 
