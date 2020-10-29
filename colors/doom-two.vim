@@ -253,6 +253,7 @@ hi! link Msg        TextSuccess
 hi! link MoreMsg    TextInfo
 hi! link WarningMsg TextWarning
 hi! link ErrorMsg   TextError
+hi! link HintMsg    TextSpecial
 hi! link Error      TextError
 hi! link ModeMsg    TextSpecial
 hi! link Todo       TextWarningBold
